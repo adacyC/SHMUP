@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
+#include "Components/BoxComponent.h"
 #include "PlayerPawn.generated.h"
 
 UCLASS()
@@ -21,8 +22,14 @@ public:
 protected:
 	virtual void BeginPlay() override;
     
+    UFUNCTION(BlueprintCallable, Category="Setup")
+    void SpawnToStartLocation(float Speed);
+    
     UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Setup")
     UStaticMeshComponent* PlayerMesh;
+    
+    UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Setup")
+    UBoxComponent* Box = nullptr;
     
     UPROPERTY(BlueprintReadOnly, Category="Setup")
     float Yaw = 0.f;
