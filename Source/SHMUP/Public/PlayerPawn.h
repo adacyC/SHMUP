@@ -37,12 +37,23 @@ protected:
     UPROPERTY(BlueprintReadOnly, Category="Setup")
     FVector SpawnLocation;
     
-private:
-    bool MoveEnabled = false;
-    float DeltaSeconds = 0.f;
-    float HorizontalSpeed = 0.f;
+    UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Setup")
+    float MovementSpeed = 2.f;
+    
+    UPROPERTY(BlueprintReadOnly, Category="Setup")
     float VerticalSpeed = 0.f;
-    float MovementSpeed = 0.f;
+    
+    UPROPERTY(BlueprintReadOnly, Category="Setup")
+    float HorizontalSpeed = 0.f;
+    
+private:
+    void SetVerticalSpeed(float AxisValue);
+    void SetHorizontalSpeed(float AxisValue);
+    void UpdateShipHorizontalLocation();
+    void UpdateShipVerticalLocation();
+    
+    float DeltaSeconds = 0.f;
+    bool MoveEnabled = false;
     float CurrentSpeed = 0.f;
     float Health = 0.f;
     float MaxHealth = 0.f;
